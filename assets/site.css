@@ -418,16 +418,22 @@ body { padding: 0 0 5rem; }
   background: repeating-linear-gradient(115deg,
     transparent 0 13px, var(--tile-ink) 13px 14px);
 }
-.tile b {
-  position: relative;
-  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
-  font-size: clamp(3rem, 9vw, 5.5rem); font-weight: 700; line-height: 0.82;
-  letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
-}
+/* The label sits ABOVE the figure. A bare numeral on its own reads as an index
+   or a sequence number; leading with the label makes it read as a statistic. */
 .tile span {
   position: relative;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.85;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; opacity: 0.92;
+  padding-bottom: 0.4rem; margin-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(242, 246, 241, 0.28);
+  align-self: flex-start; max-width: 100%;
+}
+.tile b {
+  position: relative;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(2.6rem, 7vw, 4.2rem); font-weight: 700; line-height: 0.85;
+  letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
 }
 
 /* Headshot frieze. Sources are white-background cutouts, so they are blended
@@ -449,14 +455,10 @@ body { padding: 0 0 5rem; }
     rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.28) 42%, rgba(0,0,0,0) 78%);
 }
 .tile b, .tile span { z-index: 3; }
-.tile.sm .art, .tile.sm .scrim { display: none; }
 
 .tile.hero-art { aspect-ratio: 21 / 9; max-height: 19rem; }
-.tile.sm { aspect-ratio: 1 / 1; padding: 0.55rem 0.6rem; border-radius: 2px; }
-.tile.sm b { font-size: 1.75rem; }
-.tile.sm span { display: none; }
 .tile.card-art { aspect-ratio: 16 / 10; }
-.tile.card-art b { font-size: clamp(2.4rem, 6vw, 3.4rem); }
+.tile.card-art b { font-size: clamp(2.1rem, 5vw, 2.9rem); }
 
 /* ---------- category tag ---------- */
 .tag {
@@ -494,7 +496,7 @@ body { padding: 0 0 5rem; }
   padding-bottom: 0.55rem; border-bottom: 2px solid var(--ink);
 }
 .rail-item {
-  display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: 0.85rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
   padding: 0.95rem 0; border-bottom: 1px solid var(--rule);
   text-decoration: none; color: inherit;
 }
@@ -504,7 +506,7 @@ body { padding: 0 0 5rem; }
   text-wrap: balance; transition: color 0.12s ease;
 }
 .rail-item:hover .rt { color: var(--accent); }
-.rail-item .rm { margin-top: 0.3rem; }
+.rail-item .rm { margin-top: 0; }
 
 /* ---------- section header + card grid ---------- */
 .sec-head {
