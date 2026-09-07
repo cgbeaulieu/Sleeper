@@ -449,9 +449,7 @@ body { padding: 0 0 5rem; }
     rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.28) 42%, rgba(0,0,0,0) 78%);
 }
 .tile b, .tile span { z-index: 3; }
-.tile.sm .art img:not(:first-child) { display: none; }
-.tile.sm .art img { object-position: center 14%; opacity: 0.7; }
-.tile.sm .scrim { background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.1)); }
+.tile.sm .art, .tile.sm .scrim { display: none; }
 
 .tile.hero-art { aspect-ratio: 21 / 9; max-height: 19rem; }
 .tile.sm { aspect-ratio: 1 / 1; padding: 0.55rem 0.6rem; border-radius: 2px; }
