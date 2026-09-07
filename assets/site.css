@@ -667,3 +667,34 @@ article > header { padding-top: 2.5rem; }
 
 /* The house position, stated in the furniture rather than smuggled into analysis. */
 .stance { color: var(--accent); font-weight: 600; letter-spacing: 0.05em; }
+
+/* ---------- plain portrait ----------
+   For a photograph that is the subject itself rather than cover texture: a
+   person's portrait, shown as taken. No duotone, no scrim, no banner crop. */
+.tile.plain {
+  background: none;
+  aspect-ratio: auto;
+  max-height: none;
+  max-width: 23rem;
+  border-radius: 3px;
+}
+.tile.plain::before { display: none; }
+.tile.plain .scrim { display: none; }
+.tile.plain .art { position: relative; inset: auto; }
+.tile.plain .art img {
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: 1;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 22%;
+  border-radius: 3px;
+}
+
+/* ---------- inline body photograph ----------
+   A picture shown for itself inside the prose, not cropped into cover art. */
+.bodyphoto { padding: 0; background: none; border: 0; gap: 0; }
+.bodyphoto img { width: 100%; height: auto; display: block; border-radius: 3px; }
+.bodyphoto figcaption { border-top: 0; padding-top: 0.6rem; }
