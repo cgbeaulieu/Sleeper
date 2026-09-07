@@ -245,7 +245,7 @@ figcaption {
 .badge.good { color: var(--accent); }
 .badge.warn { color: var(--signal); }
 
-/* ---------- roast ---------- */
+/* ---------- spotlight ---------- */
 .spotlight {
   background: var(--surface); border: 1px solid var(--rule);
   border-top: 3px solid var(--signal); border-radius: 3px;
@@ -405,7 +405,8 @@ body { padding: 0 0 5rem; }
 /* ---------- generated art tiles (the site has no photography) ---------- */
 :root { --tile-1: #0B4F3A; --tile-2: #6E4708; --tile-3: #1B2A22; --tile-ink: #F2F6F1; }
 .tile {
-  position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; isolation: isolate;
+  display: flex; flex-direction: column; justify-content: flex-end;
   aspect-ratio: 16 / 9; overflow: hidden; border-radius: 3px;
   background: var(--tile-1); color: var(--tile-ink);
   padding: 1rem 1.1rem; gap: 0.1rem;
@@ -413,7 +414,7 @@ body { padding: 0 0 5rem; }
 .tile.t2 { background: var(--tile-2); }
 .tile.t3 { background: var(--tile-3); }
 .tile::before {
-  content: ""; position: absolute; inset: 0; opacity: 0.13;
+  content: ""; position: absolute; inset: 0; z-index: 1; opacity: 0.13;
   background: repeating-linear-gradient(115deg,
     transparent 0 13px, var(--tile-ink) 13px 14px);
 }
@@ -428,6 +429,30 @@ body { padding: 0 0 5rem; }
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase; opacity: 0.85;
 }
+
+/* Headshot frieze. Sources are white-background cutouts, so they are blended
+   into the tile field rather than sitting on it as white rectangles:
+   grayscale + luminosity turns each into a duotone of the tile colour. */
+.tile .art {
+  position: absolute; inset: 0; z-index: 0;
+  display: flex; align-items: flex-start;
+}
+.tile .art img {
+  flex: 1 1 0; min-width: 0; height: 100%;
+  object-fit: cover; object-position: center 13%;
+  filter: grayscale(1) contrast(1.06);
+  mix-blend-mode: luminosity; opacity: 0.68;
+}
+.tile .scrim {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to top,
+    rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.28) 42%, rgba(0,0,0,0) 78%);
+}
+.tile b, .tile span { z-index: 3; }
+.tile.sm .art img:not(:first-child) { display: none; }
+.tile.sm .art img { object-position: center 14%; opacity: 0.7; }
+.tile.sm .scrim { background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.1)); }
+
 .tile.hero-art { aspect-ratio: 21 / 9; max-height: 19rem; }
 .tile.sm { aspect-ratio: 1 / 1; padding: 0.55rem 0.6rem; border-radius: 2px; }
 .tile.sm b { font-size: 1.75rem; }
