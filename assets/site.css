@@ -698,3 +698,15 @@ article > header { padding-top: 2.5rem; }
 .bodyphoto { padding: 0; background: none; border: 0; gap: 0; }
 .bodyphoto img { width: 100%; height: auto; display: block; border-radius: 3px; }
 .bodyphoto figcaption { border-top: 0; padding-top: 0.6rem; }
+
+/* ---------- eulogy ----------
+   One continuous piece of writing. Every other article on this site is chopped
+   into labelled sections because that suits analysis; this one is not analysis. */
+.eulogy { gap: 1.35rem; margin-top: 3rem; }
+.eulogy p { font-size: 1.14rem; line-height: 1.68; }
+.eulogy p:first-of-type { font-size: 1.28rem; line-height: 1.55; color: var(--ink); }
+.eulogy .signoff {
+  margin-top: 0.9rem; padding-top: 1.35rem;
+  border-top: 1px solid var(--rule);
+  font-style: italic; color: var(--ink-2);
+}
